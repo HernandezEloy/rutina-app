@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <h1>Mi Perfil</h1>
+    </header>
+    <section class="profile-section">
+        <h2>Editar Perfil</h2>
+        <form id="profile-form">
+            <h3>Plan Full 🩷🏋🏻‍♀️</h3>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+            
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" required>
+            
+            <label for="peso">Peso actual en KG:</label>
+            <input type="number" id="peso" name="peso" required>
+            
+            <label for="estatura">Estatura en cm:</label>
+            <input type="number" id="estatura" name="estatura" required>
+            
+            <!-- Aquí puedes continuar añadiendo los demás campos -->
+            <h3>Para el plan de alimentación👇🏻</h3>
+            
+            <label for="comidas-dia">¿Cuántas comidas por día realizas?</label>
+            <input type="number" id="comidas-dia" name="comidas-dia" required>
+            
+            <label for="objetivo-nutricion">¿Qué objetivo tienes con este plan?</label>
+            <textarea id="objetivo-nutricion" name="objetivo-nutricion" required></textarea>
+            
+            <!-- Más campos según tu listado -->
+            
+            <h3>Para el plan de entrenamiento👇🏻</h3>
+            <label for="gym-casa">¿Lo realizas en gym o casa?</label>
+            <select id="gym-casa" name="gym-casa" required>
+                <option value="gym">Gym</option>
+                <option value="casa">Casa</option>
+            </select>
+            
+            <button type="submit">Guardar</button>
+        </form>
+    </section>
+    <script>
+        const form = document.getElementById('profile-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Guardar los datos en localStorage
+            const formData = new FormData(form);
+            const profileData = {};
+            formData.forEach((value, key) => {
+                profileData[key] = value;
+            });
+
+            localStorage.setItem('profile', JSON.stringify(profileData));
+            alert('Datos guardados correctamente');
+        });
+
+        // Cargar datos si ya existen
+        const savedData = JSON.parse(localStorage.getItem('profile'));
+        if (savedData) {
+            Object.keys(savedData).forEach((key) => {
+                const input = form.querySelector(`[name="${key}"]`);
+                if (input) input.value = savedData[key];
+            });
+        }
+    </script>
+</body>
+</html>

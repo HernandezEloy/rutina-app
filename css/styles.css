@@ -1,0 +1,294 @@
+/* Estilo General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #6200ea;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #3700b3;
+    transform: scale(1.05);
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #6200ea;
+    color: white;
+    position: relative;
+}
+
+.navbar-left {
+    position: relative;
+}
+
+.menu-btn {
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-btn:hover {
+    background-color: white;
+    color: #6200ea;
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* Fondo blanco */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* Oculta el menú inicialmente */
+    z-index: 1000;
+}
+
+/* Estilo para el usuario en el menú desplegable */
+.dropdown-menu li {
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    color: #6200ea; /* Cambia el color del texto del usuario */
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+.dropdown-menu li:first-child {
+    background-color: #f4f4f4; /* Fondo más claro para el nombre del usuario */
+    color: #333; /* Texto más oscuro para mejor visibilidad */
+    text-align: center; /* Centra el nombre del usuario */
+    font-size: 1.1rem; /* Tamaño de fuente ligeramente más grande */
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+/* Links del menú */
+.dropdown-menu a {
+    display: block;
+    color: #333; /* Color oscuro para el texto de los enlaces */
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Submenú */
+.sub-menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+    border-radius: 5px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+
+.sub-menu li {
+    border-bottom: 1px solid #ddd;
+}
+
+.sub-menu li:last-child {
+    border-bottom: none;
+}
+
+.sub-menu a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.sub-menu a:hover {
+    background-color: #6200ea;
+    color: white;
+}
+
+/* Mostrar el submenú al pasar sobre el usuario */
+#user-name:hover .sub-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+/* Hover para los links */
+.dropdown-menu a:hover {
+    background-color: #6200ea; /* Fondo púrpura */
+    color: white; /* Texto blanco al pasar el mouse */
+}
+
+/* Mostrar el menú al hacer clic */
+.navbar-left.open .dropdown-menu {
+    display: block;
+}
+
+/* Estado del usuario: indicador de sesión */
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.status-indicator.online {
+    background-color: green; /* Sesión iniciada */
+}
+
+.status-indicator.offline {
+    background-color: red; /* Sesión cerrada */
+}
+
+/* Hero Section */
+.hero {
+    background: url('../img/hero-background.jpg') no-repeat center center/cover;
+    color: white;
+    height: 90vh; /* Aumentamos la altura para dar más espacio */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    transform: translateY(-50px); /* Ajusta el contenido */
+}
+
+/* Estilo para el título "Andrea Fitness" */
+.hero-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 4rem; /* Tamaño del texto */
+    color: #ffffff; /* Texto blanco */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6); /* Sombra para mayor contraste */
+    letter-spacing: 1.5px; /* Espaciado entre letras */
+    margin: 0; /* Elimina márgenes */
+    text-transform: uppercase; /* Convierte el texto en mayúsculas */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero-subcontent {
+    margin-top: 30px; /* Ajusta el espacio entre el texto y el botón */
+}
+
+.hero-subcontent .button {
+    margin-top: 300px; /* Baja el botón aún más */
+    padding: 12px 30px; /* Tamaño del botón */
+}
+
+/* About Section */
+.about,
+.services,
+.contact {
+    padding: 50px 20px;
+}
+
+.about h2,
+.services h2,
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.services {
+    background-color: #f4f4f4;
+}
+
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+/* Contact Section */
+.contact-info .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.contact-info a {
+    font-size: 1.2rem;
+    color: #6200ea;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    color: #3700b3;
+}
