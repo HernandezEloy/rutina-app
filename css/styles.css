@@ -292,3 +292,30 @@ a:hover {
 .card p {
     color: #333;
 }
+
+/* Sección de videos */
+.video-gallery {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.video-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.video {
+    width: 30%; /* Los videos ocuparán un 30% del ancho cada uno */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video:hover {
+    border-color: #6200ea;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
