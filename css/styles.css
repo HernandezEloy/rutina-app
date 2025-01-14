@@ -113,43 +113,6 @@ a:hover {
     transition: background-color 0.3s ease;
 }
 
-/* Submenú */
-.sub-menu {
-    display: none;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: #ffffff;
-    border-radius: 5px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-}
-
-.sub-menu li {
-    border-bottom: 1px solid #ddd;
-}
-
-.sub-menu li:last-child {
-    border-bottom: none;
-}
-
-.sub-menu a {
-    display: block;
-    color: #333;
-    text-decoration: none;
-    padding: 10px 15px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.sub-menu a:hover {
-    background-color: #6200ea;
-    color: white;
-}
-
 /* Mostrar el submenú al pasar sobre el usuario */
 #user-name:hover .sub-menu {
     display: block;
