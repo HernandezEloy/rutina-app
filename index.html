@@ -5,136 +5,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rutina App</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Fuente Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-left">
-            <button class="menu-btn">Menú</button>
-            <ul class="dropdown-menu">
-                <li id="user-name">
-                    <a href="#" class="user-name">Usuario</a>
-                </li>
-                <li><a href="mi-perfil.html" target="_blank">Mi Perfil</P></a></li>
-                <li><a href="rutinas.html" target="_blank">Rutinas</a></li>
-            </ul>
-        </div>
-        <div class="navbar-right">
-            <span id="user-info"></span>
-            <span id="status-indicator" class="status-indicator"></span>
-        </div>
-    </nav>    
-
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Andrea Fitness</h1>
-            <div class="hero-subcontent">
-                <p class="hero-subtitle">Rutinas personalizadas y planes de alimentación para un estilo de vida saludable.</p>
-                <a href="login.html" class="button">Comienza Ahora</a>
+    <!-- Vue App -->
+    <div id="app">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar-left">
+                <button class="menu-btn">Menú</button>
+                <ul class="dropdown-menu">
+                    <li v-if="isLoggedIn">
+                        <a href="#" class="user-name">{{ user.name }}</a>
+                    </li>
+                    <li v-if="isLoggedIn"><a href="mi-perfil.html" target="_blank">Mi Perfil</a></li>
+                    <li v-if="isLoggedIn"><a href="rutinas.html" target="_blank">Rutinas</a></li>
+                </ul>
             </div>
-        </div>
-    </header>     
+            <div class="navbar-right">
+                <span id="status-indicator" class="status-indicator" :class="isLoggedIn ? 'online' : 'offline'"></span>
+                <button v-if="isLoggedIn" @click="logout">Cerrar Sesión</button>
+                <a v-else href="login.html" class="nav-link">Iniciar Sesión</a>
+            </div>
+        </nav>
 
-    <!-- About Section -->
-    <section class="about">
-        <h2>Quiénes Somos</h2>
-        <p>Somos expertos en fitness dedicados a ayudarte a alcanzar tus objetivos. Descubre nuestras rutinas personalizadas y planes diseñados exclusivamente para ti.</p>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services">
-        <h2>Nuestros Servicios</h2>
-        <div class="service-cards">
-            <!-- Planes Alimenticios -->
-            <a href="planes.html" class="card-link">
-                <div class="card">
-                    <h3>Planes Alimenticios</h3>
-                    <p>Diseñados para tus objetivos y estilo de vida.</p>
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Andrea Fitness</h1>
+                <div class="hero-subcontent">
+                    <p class="hero-subtitle">Rutinas personalizadas y planes de alimentación para un estilo de vida saludable.</p>
+                    <a href="login.html" class="button">Comienza Ahora</a>
                 </div>
-            </a>
-            <!-- Rutinas de Ejercicio -->
-            <a href="rutinas.html" class="card-link" target="_blank">
-                <div class="card">
-                    <h3>Rutinas de Ejercicio</h3>
-                    <p>Entrenamientos efectivos y adaptados a tu nivel.</p>
-                </div>
-            </a>
-            <!-- Soporte Personalizado -->
-            <a href="soporte.html" class="card-link">
-                <div class="card">
-                    <h3>Soporte Personalizado</h3>
-                    <p>Te acompañamos en cada paso de tu progreso.</p>
-                </div>
-            </a>
-        </div>
-    </section>
-    
+            </div>
+        </header>     
 
-    <!-- Contact Section -->
-    <section class="contact">
-        <h2>Contáctanos</h2>
-        <p>¿Listo para empezar? Ponte en contacto con nosotros hoy.</p>
-        <div class="contact-info">
-            <p>
-                <img src="img/ico/ico_whatsapp.png" alt="WhatsApp" class="icon"> 
-                <a href="tel:+5491123965444">+54 9 11 2396 5444</a>
-            </p>
-            <p>
-                <img src="img/ico/ico_instagram.png" alt="Instagram" class="icon"> 
-                <a href="https://www.instagram.com/andrea_fitness" target="_blank">@andrea_fitness</a>
-            </p>
-        </div>
-        <a href="registro.html" class="button">Comienza Ahora</a>
-    </section>
+        <!-- About Section -->
+        <section class="about">
+            <h2>Quiénes Somos</h2>
+            <p>Somos expertos en fitness dedicados a ayudarte a alcanzar tus objetivos. Descubre nuestras rutinas personalizadas y planes diseñados exclusivamente para ti.</p>
+        </section>
 
-    <!-- Scripts -->
+        <!-- Services Section -->
+        <section class="services">
+            <h2>Nuestros Servicios</h2>
+            <div class="service-cards">
+                <a href="planes.html" class="card-link">
+                    <div class="card blue">
+                        <h3>Planes Alimenticios</h3>
+                        <p>Diseñados para tus objetivos y estilo de vida.</p>
+                        <span class="arrow-icon">➤</span>
+                    </div>
+                </a>
+                <a href="rutinas.html" class="card-link">
+                    <div class="card orange">
+                        <h3>Rutinas de Ejercicio</h3>
+                        <p>Entrenamientos efectivos y adaptados a tu nivel.</p>
+                        <span class="arrow-icon">➤</span>
+                    </div>
+                </a>
+                <a href="soporte.html" class="card-link">
+                    <div class="card green">
+                        <h3>Soporte Personalizado</h3>
+                        <p>Te acompañamos en cada paso de tu progreso.</p>
+                        <span class="arrow-icon">➤</span>
+                    </div>
+                </a>
+            </div>
+        </section>        
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <h2>Contáctanos</h2>
+            <p>¿Listo para empezar? Ponte en contacto con nosotros hoy.</p>
+            <div class="contact-info">
+                <p>
+                    <img src="img/ico/ico_whatsapp.png" alt="WhatsApp" class="icon"> 
+                    <a href="tel:+5491123965444">+54 9 11 2396 5444</a>
+                </p>
+                <p>
+                    <img src="img/ico/ico_instagram.png" alt="Instagram" class="icon"> 
+                    <a href="https://www.instagram.com/andrea_fitness" target="_blank">@andrea_fitness</a>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Vue Script -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
     <script>
-        const userInfo = document.getElementById('user-info');
-        const statusIndicator = document.getElementById('status-indicator');
-        const userNameItem = document.getElementById('user-name');
-
-        // Verificar si hay un usuario en localStorage
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-
-        if (storedUser) {
-            // Si hay un usuario, configuramos el estado de sesión iniciada
-            userInfo.innerHTML = `
-                <button id="logout-btn">Cerrar sesión</button>
-            `;
-            statusIndicator.classList.add('online'); // Luz verde
-            userNameItem.textContent = storedUser.username; // Mostrar nombre en el menú
-
-            // Funcionalidad del botón "Cerrar sesión"
-            const logoutBtn = document.getElementById('logout-btn');
-            logoutBtn.addEventListener('click', () => {
-                localStorage.removeItem('user'); // Eliminar los datos del usuario
-                window.location.reload(); // Recargar la página
-            });
-        } else {
-            // Si no hay usuario, configuramos el estado de sesión cerrada
-            userInfo.innerHTML = `
-                <a href="login.html">Iniciar sesión</a>
-            `;
-            statusIndicator.classList.add('offline'); // Luz roja
-            userNameItem.textContent = 'No hay sesión activa'; // Mostrar mensaje en el menú
-        }
-
-        // Script para manejar el menú desplegable
-        const menuBtn = document.querySelector('.menu-btn');
-        const navbarLeft = document.querySelector('.navbar-left');
-
-        menuBtn.addEventListener('click', () => {
-            // Alternar la clase 'open' para mostrar u ocultar el menú
-            navbarLeft.classList.toggle('open');
-        });
-
-        // Cerrar el menú si se hace clic fuera
-        document.addEventListener('click', (event) => {
-            if (!navbarLeft.contains(event.target)) {
-                navbarLeft.classList.remove('open');
+        const app = Vue.createApp({
+            data() {
+                return {
+                    isLoggedIn: false,
+                    user: {
+                        name: 'Usuario Conectado'
+                    },
+                    services: [
+                        {
+                            title: 'PLANES ALIMENTICIOS',
+                            description: 'Diseñados para tus objetivos y estilo de vida.',
+                            link: 'planes.html',
+                            color: 'blue'
+                        },
+                        {
+                            title: 'RUTINAS DE EJERCICIO',
+                            description: 'Entrenamientos efectivos y adaptados a tu nivel.',
+                            link: 'rutinas.html',
+                            color: 'orange'
+                        },
+                        {
+                            title: 'SOPORTE PERSONALIZADO',
+                            description: 'Te acompañamos en cada paso de tu progreso.',
+                            link: 'soporte.html',
+                            color: 'green'
+                        }
+                    ]
+                };
+            },
+            methods: {
+                logout() {
+                    this.isLoggedIn = false;
+                    localStorage.removeItem('user'); // Borra datos del usuario
+                },
+                checkLogin() {
+                    const storedUser = JSON.parse(localStorage.getItem('user'));
+                    if (storedUser) {
+                        this.isLoggedIn = true;
+                        this.user.name = storedUser.username;
+                    }
+                }
+            },
+            mounted() {
+                this.checkLogin();
             }
         });
+
+        app.mount('#app');
     </script>
+
+<script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const navbarLeft = document.querySelector('.navbar-left');
+
+    menuBtn.addEventListener('click', () => {
+        navbarLeft.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!navbarLeft.contains(event.target) && !menuBtn.contains(event.target)) {
+            navbarLeft.classList.remove('open');
+        }
+    });
+</script>
+
 </body>
 </html>
